@@ -1,0 +1,29 @@
+{
+  "name": "waterloo_analytics_cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "wa": "./bin/wa.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihardcoder/Waterloo-analytics-cli.git"
+  },
+  "author": "zhoujunpeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihardcoder/Waterloo-analytics-cli/issues"
+  },
+  "homepage": "https://github.com/ihardcoder/Waterloo-analytics-cli#readme",
+  "dependencies": {
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0",
+    "fs-promise": "^0.5.0",
+    "promptly": "^1.1.0",
+    "waterloo_analytics": "0.0.2"
+  }
+}
