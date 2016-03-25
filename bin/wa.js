@@ -19,28 +19,26 @@ program.command('init [dir]')
 
         console.log('Initializing...');
         fsp.readdir(dir).then(function(files) {
-            if (files) {
-                promptly.choose('The action will wipe all data of the dir,are you sure to do this?(y/n)', ['yes', 'y', 'no', 'n'], function(err, value) {
-                    // prompt if the sepecific dir is not empty
-                    if (value === 'y' || value === 'yes') {
-                        fsp.emptydir(dir).then(function() {
-                            fsp.copy(_dir, dir);
-                        }).then(function() {
-                            console.log('Initialized Successfully!');
-                        });
-                    } else {
-                        console.log('The action is interrupted!');
-                        // exit the process if user choose 'n' or 'no'
-                        process.exit();
-                    }
-                });
-            } else {
-                fsp.mkdirs(dir).then(function() {
-                    fsp.copy(_dir, dir);
-                }).then(function() {
-                    console.log('Initialized Successfully!');
-                });
-            }
+            promptly.choose('The action will wipe all data of the dir,are you sure to do this?(y/n)', ['yes', 'y', 'no', 'n'], function(err, value) {
+                // prompt if the sepecific dir is not empty
+                if (value === 'y' || value === 'yes') {
+                    fsp.emptydir(dir).then(function() {
+                        fsp.copy(_dir, dir);
+                    }).then(function() {
+                        console.log('Initialized Successfully!');
+                    });
+                } else {
+                    console.log('The action is interrupted!');
+                    // exit the process if user choose 'n' or 'no'
+                    process.exit();
+                }
+            });
+        }).catch(function() {
+            fsp.mkdirs(dir).then(function() {
+                fsp.copy(_dir, dir);
+            }).then(function() {
+                console.log('Initialized Successfully!');
+            });
         });
     });
 // build命令
